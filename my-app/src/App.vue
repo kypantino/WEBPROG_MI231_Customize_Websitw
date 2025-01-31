@@ -2,11 +2,11 @@
 import { ref, onMounted } from 'vue'
 import { supabase } from './lib/supabaseClient'
 
-const countries = ref([])
+const comments = ref([])
 
 async function getComments() {
   const { data } = await supabase.from('comments').select()
-  commentss.value = data
+  comments.value = data
 }
 
 onMounted(() => {
@@ -16,6 +16,6 @@ onMounted(() => {
 
 <template>
   <ul>
-    <li v-for="comments in comments" :key="comments.id">{{ comment.name }} </li>
+    <li v-for="comments in comments" :key="comments.id">{{ comment.name }} {{ comment.comment }}</li>
   </ul>
 </template>
